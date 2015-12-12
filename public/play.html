@@ -18,3 +18,25 @@
         </div>
       </div>
     </nav>
+
+       <div id="wrapper">
+</div>
+
+    <script type="text/javascript">
+    const BIG_SIZE = 300;
+    const SIZE = 10;
+    var div = document.createElement("div");
+    div.style.width = BIG_SIZE + "px";
+    div.style.height = BIG_SIZE + "px";
+    div.setAttribute('id', 'bigsquare');
+    document.getElementById('wrapper').appendChild(div);
+
+    for (i = 0; i < SIZE * SIZE; i++) {
+        var div = document.createElement("div");
+        div.style.width = BIG_SIZE / SIZE + "px";
+        div.style.height = BIG_SIZE / SIZE + "px";
+        div.setAttribute('class', 'small');
+        div.setAttribute('id', 'small'+i);
+        document.getElementById('bigsquare').appendChild(div);
+    }
+</script>
