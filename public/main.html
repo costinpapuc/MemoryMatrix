@@ -1,0 +1,16 @@
+<!-- main.html -->
+<div class="jumbotron text-center">
+    <h1>Main page</h1>
+
+    <p>{{ message }}</p>
+	<form ng-submit="logIn(tip);">
+	  <input type="text" name="user" placeholder="First name" ng-model="user">
+	  <input ng-show="showpass" type="text" name="password" placeholder="Last name" ng-model="password">
+	  <input ng-hide="showpass" type="password" name="password" placeholder="Last name" ng-model="password">
+	  <label>Show password<input type="checkbox" ng-model="showpass"></label>
+	  <button ng-click="tip='existing'">Log In</button>
+	  <button ng-click="tip='new'">Sign Up</button>
+	  {{password}} {{tip}} {{user}}
+	  {{response}}
+	</form>
+</div>
