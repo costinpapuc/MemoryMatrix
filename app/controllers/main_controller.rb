@@ -34,6 +34,7 @@ class MainController < ActionController::Base
 				LoginDetail.create({:username => given_name,
 									:password => given_pass,
 									:high_score => 0})
+				reply = "DA"
 			end
 			if error == 0
 				reply = "Signup successful."
