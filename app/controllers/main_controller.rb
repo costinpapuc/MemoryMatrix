@@ -21,6 +21,9 @@ class MainController < ActionController::Base
 			if error == 1 
 				reply = "Login error: incorrect username or password."
 			end
+			if error = 0
+				reply = "Login successful."
+			end
 		end
 		# signup - se cauta sa nu existe
 		if login_type == 'new'
@@ -32,13 +35,12 @@ class MainController < ActionController::Base
 									:password => given_pass,
 									:high_score => 0})
 			end
+			if error = 0
+				reply = "Signup successful."
+			end
 		end
 
-		if error == 0
-			reply = "Login successful."
-		end
-		offered_result = {"error" => error, "reply" => reply}
-		render json: offered_result
+		render json: {"error" => error, "reply" => reply}
 	end
 
 	def updatescore
@@ -53,6 +55,24 @@ class MainController < ActionController::Base
 			end	
 		end
 		render json: {}
+	end
+
+	def pattern
+		r = params[:r].to_i
+		c = params[:c].to_i
+
+		row = []
+		c.times do
+			row.push(0)
+		end
+		mat = []
+		r.times do
+			mat.push(row)
+		end
+
+		#zones
+
+		render json: {"matrix" => mat}
 	end
 
 end
