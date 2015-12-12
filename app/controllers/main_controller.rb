@@ -21,7 +21,7 @@ class MainController < ActionController::Base
 			if error == 1 
 				reply = "Login error: incorrect username or password."
 			end
-			if error = 0
+			if error == 0
 				reply = "Login successful."
 			end
 		end
@@ -35,11 +35,11 @@ class MainController < ActionController::Base
 									:password => given_pass,
 									:high_score => 0})
 			end
-			if error = 0
+			if error == 0
 				reply = "Signup successful."
 			end
 		end
-
+		reply += " #{given_name} #{given_pass} #{login_type}"
 		render json: {"error" => error, "reply" => reply}
 	end
 
