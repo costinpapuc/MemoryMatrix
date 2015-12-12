@@ -21,7 +21,7 @@ class MainController < ActionController::Base
 			if error == 1 
 				reply = "Login error: incorrect username or password."
 			end
-			if error == 0
+			if error = 0
 				reply = "Login successful."
 			end
 		end
@@ -36,11 +36,11 @@ class MainController < ActionController::Base
 									:high_score => 0})
 				reply = "DA"
 			end
-			if error == 0
+			if error = 0
 				reply = "Signup successful."
 			end
 		end
-		reply += " #{given_name} #{given_pass} #{login_type}"
+
 		render json: {"error" => error, "reply" => reply}
 	end
 
@@ -59,48 +59,21 @@ class MainController < ActionController::Base
 	end
 
 	def pattern
-		# 3 <= d <= 15
-		d = params[:dimension].to_i
+		r = params[:r].to_i
+		c = params[:c].to_i
 
+		row = []
+		c.times do
+			row.push(0)
+		end
 		mat = []
-		reply = ""
-		error = 0
-		if ((d < 3) || (d > 15))
-			error = 1
-			reply = "The dimension must be in range [3..15]."
-		else
-			#         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15
-			zones = [ 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2]
-			#
-			d.times do
-				row = []
-				d.times do
-					row.push(0)
-				end
-				mat.push(row)
-			end
-			if zones[d] == 0 # complet random
-				indices = (0..d*d-1).to_a.sort{ rand() - 0.5 }[1..d]
-				indices.each { |x| mat[x/d][x%d] = 1 }
-			elsif zones[d] == 3
-				dd = d
-				indices = (0..d*d/2-1).to_a.sort{ rand() - 0.5 }[1..dd/2]
-				dd -= dd/2
-				indices += (d*d/2..d*d*3/4-1).to_a.sort{ rand() - 0.5 }[1..dd/2]
-				dd -= dd/2
-				indices += (d*d*3/4..d*d-1).to_a.sort{ rand() - 0.5 }[1..dd]
-				indices.each { |x| mat[x/d][x%d] = 1 }
-			elsif zones[d] == 2
-				dd = d
-				indices = (0..d*d/2-1).to_a.sort{ rand() - 0.5 }[1..dd/2]
-				dd -= dd/2
-				indices += (d*d/2..d*d-1).to_a.sort{ rand() - 0.5 }[1..dd]
-				indices.each { |x| mat[x/d][x%d] = 1 }
-			end
-
+		r.times do
+			mat.push(row)
 		end
 
-		render json: {"error" => error, "reply" => reply, "matrix" => mat}
+		#zones
+
+		render json: {"matrix" => mat}
 	end
 
 end

@@ -1,7 +1,42 @@
 <!-- play.html -->
-<div class="jumbotron text-center">
-    <h1>Play page</h1>
+<nav class="navbar navbar-inverse" style="height:100px">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand" style="color:black;font-size:40px;margin-top:20px;padding-right:0px;margin-right:5px;margin-left:10px;">MemoryMatrix</span>
 
-    <p>{{message}}</p>
-    <p>Hello {{user}} ! Have fun!</p>
+        </div>
+        <div>
+          
+        <img src="img/mat.svg" alt="grid" style="width:50;height:50;display:inline;margin-top:20px">
+          <div class="pull-right" style="margin-top:32px;">
+          	<span style="display:inline">Signed in as {{user}}</span>
+            <form ng-submit="logOut();">
+                <button ng-click class="btn btn-primary active" style="background-color:black;margin-left:3px">Log out</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+       <div id="wrapper">
 </div>
+
+    <script type="text/javascript">
+    const BIG_SIZE = 300;
+    const SIZE = 10;
+    var div = document.createElement("div");
+    div.style.width = BIG_SIZE + "px";
+    div.style.height = BIG_SIZE + "px";
+    div.setAttribute('id', 'bigsquare');
+    document.getElementById('wrapper').appendChild(div);
+
+    for (i = 0; i < SIZE * SIZE; i++) {
+        var div = document.createElement("div");
+        div.style.width = BIG_SIZE / SIZE + "px";
+        div.style.height = BIG_SIZE / SIZE + "px";
+        div.setAttribute('class', 'small');
+        div.setAttribute('id', 'small'+i);
+        document.getElementById('bigsquare').appendChild(div);
+    }
+</script>

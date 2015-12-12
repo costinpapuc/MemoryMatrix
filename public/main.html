@@ -1,16 +1,25 @@
 <!-- main.html -->
-<div class="jumbotron text-center">
-    <h1>Main page</h1>
+    <nav class="navbar navbar-inverse" style="height:100px">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand" style="color:black;font-size:40px;margin-top:20px;padding-right:0px;margin-right:5px;margin-left:10px;">MemoryMatrix</span>
 
-    <p>{{ message }}</p>
-	<form ng-submit="logIn(tip);">
-	  <input type="text" name="user" placeholder="First name" ng-model="user">
-	  <input ng-show="showpass" type="text" name="password" placeholder="Last name" ng-model="password">
-	  <input ng-hide="showpass" type="password" name="password" placeholder="Last name" ng-model="password">
-	  <label>Show password<input type="checkbox" ng-model="showpass"></label>
-	  <button ng-click="tip='existing'">Log In</button>
-	  <button ng-click="tip='new'">Sign Up</button>
-	  {{password}} {{tip}} {{user}}
-	  {{response}}
-	</form>
-</div>
+        </div>
+        <div>
+          
+        <img src="img/mat.svg" alt="grid" style="width:50;height:50;display:inline;margin-top:20px">
+          <div class="pull-right" style="margin-top:32px;">
+            <form ng-submit="logIn(tip);">
+                <input type="text" placeholder="Username" name="user" style="margin-left:5px" ng-model="user">
+                <input ng-show="showpass" type="text" placeholder="Password" name="password" style="margin-left:5px" ng-model="password">
+                <input ng-hide="showpass" type="password" placeholder="Password" name="password" style="margin-left:5px" ng-model="password">
+                <label>Show password<input type="checkbox" ng-model="showpass"></label>
+                <button ng-click="tip='existing'" class="btn btn-primary active" style="background-color:black;margin-left:5px">Sign in</button>
+                <button ng-click="tip='new'" class="btn btn-primary active" style="background-color:black;margin-left:3px">Sign up</button>
+                
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </nav>
