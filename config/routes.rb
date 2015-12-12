@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/login' => 'main#validate'
-  get '/updatescore' => 'main#updatescore'
+  post '/login' => 'main#validate'
+  post '/updatescore' => 'main#updatescore'
 
 end
