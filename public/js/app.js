@@ -22,6 +22,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller('mainController', ['$rootScope', '$scope', '$http', '$location', '$timeout', function($rootScope, $scope, $http, $location, $timeout) {
 	$scope.message = 'Everyone come and see how good I look!';
+    $scope.numbers = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
 
     $scope.logIn = function(tip) {
         console.log("Apelez functia.");
