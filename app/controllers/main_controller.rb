@@ -75,13 +75,13 @@ class MainController < ActionController::Base
 			d.times do
 				row = []
 				d.times do
-					row.push(0)
+					row.push(1)
 				end
 				mat.push(row)
 			end
 			if zones[d] == 0 # complet random
 				indices = (0..d*d-1).to_a.sort{ rand() - 0.5 }[1..d]
-				indices.each { |x| mat[x/d][x%d] = 1 }
+				indices.each { |x| mat[x/d][x%d] = 2 }
 			elsif zones[d] == 3
 				dd = d
 				indices = (0..d*d/2-1).to_a.sort{ rand() - 0.5 }[1..dd/2]
@@ -89,13 +89,13 @@ class MainController < ActionController::Base
 				indices += (d*d/2..d*d*3/4-1).to_a.sort{ rand() - 0.5 }[1..dd/2]
 				dd -= dd/2
 				indices += (d*d*3/4..d*d-1).to_a.sort{ rand() - 0.5 }[1..dd]
-				indices.each { |x| mat[x/d][x%d] = 1 }
+				indices.each { |x| mat[x/d][x%d] = 2 }
 			elsif zones[d] == 2
 				dd = d
 				indices = (0..d*d/2-1).to_a.sort{ rand() - 0.5 }[1..dd/2]
 				dd -= dd/2
 				indices += (d*d/2..d*d-1).to_a.sort{ rand() - 0.5 }[1..dd]
-				indices.each { |x| mat[x/d][x%d] = 1 }
+				indices.each { |x| mat[x/d][x%d] = 2 }
 			end
 
 		end

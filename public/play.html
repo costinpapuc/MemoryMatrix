@@ -1,55 +1,39 @@
 <!-- play.html -->
 <nav class="navbar navbar-inverse" style="height:100px">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand" style="color:black;font-size:40px;margin-top:20px;padding-right:0px;margin-right:5px;margin-left:10px;">MemoryMatrix</span>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand" style="color:black;font-size:40px;margin-top:20px;padding-right:0px;margin-right:5px;margin-left:10px;">MemoryMatrix</span>
 
-        </div>
-        <div>
-          
-        <img src="img/mat.svg" alt="grid" style="width:50;height:50;display:inline;margin-top:20px">
-          <div class="pull-right" style="margin-top:32px;">
-          	<span style="display:inline">Signed in as {{user}}</span>
-            <form ng-submit="logOut();">
-                <button ng-click class="btn btn-primary active" style="background-color:black;margin-left:3px">Log out</button>
-            </form>
-          </div>
-
-        </div>
+    </div>
+    <div>
+      
+    <img src="img/mat.svg" alt="grid" style="width:50;height:50;display:inline;margin-top:20px">
+      <div class="pull-right" style="margin-top:32px;">
+      	<span style="display:inline">Signed in as {{user}}</span>
+        <form ng-submit="logOut();">
+            <button ng-click class="btn btn-primary active" style="background-color:black;margin-left:3px">Log out</button>
+        </form>
       </div>
-    </nav>
 
-    <div style="margin-top:15%;margin-left:25%;margin-right:25%;position:relative;border:3px solid black;background-color:white;">
+    </div>
+  </div>
+</nav>
 
-		<div class=row ng-repeat="letter in numbers track by $index" ng-if="$index % 5 == 0" style="width:200px;
-	    margin: 0 auto;background-color:red;">
-	  		<div ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3, $index + 4]" 
-	       	ng-if="numbers[i] != null" style="display:inline-block;width:40px;border:1px solid black;background-color:blue">
-    			<div style="height:40px"><b> {{numbers[i]}}</b></div>
-  			</div>
-  		</div>
-	</div>
-
-
-
-<!--       <div id="wrapper">
+<div style="margin-left:25%;margin-right:25%;background-color:orange;opacity:0.8">
+  <h1 style="font-size:30;color:black;text-align:center">{{message + " Lives Left: " + lives + " Score: " + score}}</h1>
 </div>
 
-    <script type="text/javascript">
-    const BIG_SIZE = 300;
-    const SIZE = 10;
-    var div = document.createElement("div");
-    div.style.width = BIG_SIZE + "px";
-    div.style.height = BIG_SIZE + "px";
-    div.setAttribute('id', 'bigsquare');
-    document.getElementById('wrapper').appendChild(div);
+<div id="square" style="position:relative;margin-left:33%;margin-right:33%;height:{{h}}px;">
+<div class=row ng-repeat="i in list track by $index" style="
+  margin: 0 auto;">
+		<div class="flip-container" ng-repeat="j in list track by $index" 
+     	ng-if="mat[i] != null" style="display:inline-block;width:{{p}};border:1px solid black;background-color:white">
+      <div class="flipper" onclick="this.classList.toggle('flippedasd')">
+  			<div class="front" ng-click="check(i, j);" style="height:{{p}};background-color:{{(mat[i][j] == 2)? 'red' : 'white'}}"></div>
+      </div>
+    </div>
+</div>
+</div>
 
-    for (i = 0; i < SIZE * SIZE; i++) {
-        var div = document.createElement("div");
-        div.style.width = BIG_SIZE / SIZE + "px";
-        div.style.height = BIG_SIZE / SIZE + "px";
-        div.setAttribute('class', 'small');
-        div.setAttribute('id', 'small'+i);
-        document.getElementById('bigsquare').appendChild(div);
-    }
-</script> -->
+
+
