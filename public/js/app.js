@@ -59,6 +59,14 @@ app.controller('playController', ['$route', '$rootScope', '$scope', '$http','$lo
         $scope.list[k] = k;
     }
 
+    $http.post('/statistics', {'user': $scope.user})
+        .success(function(data, status, headers, config) {
+            $scope.highScore = Math.max.apply(Math,data['username_scores'])
+        })
+        .error(function(data, status, headers, config) {
+            console.log('Error server');
+        });
+
     $scope.h = $("#square").css("width").slice(0, -2);
     $scope.p = Math.floor($scope.h/$rootScope.dim - 1);
     $scope.ok = 0;
@@ -126,7 +134,14 @@ app.controller('playController', ['$route', '$rootScope', '$scope', '$http','$lo
 }]);
 
 
-app.controller('statisticsController', ['$scope', '$http', function($scope, $http) {
-	$scope.message = 'Statistics';
+app.controller('statisticsController', ['$route', '$rootScope', '$scope', '$http','$location', '$timeout', function($route, $rootScope, $scope, $http, $location, $timeout) {
+    $scope.user = window.localStorage.getItem('user');
+
+    $scope.logOut = function() {
+        $rootScope.user = null;
+        window.localStorage.clear();
+        $location.path('/');
+    }
+
 }]);
 

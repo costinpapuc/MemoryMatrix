@@ -1,5 +1,20 @@
 <!-- statistics.html -->
-<div class="jumbotron text-center">
-    <h1>Statistics</h1>
-    <p>{{ message }}</p>
-</div>
+<nav class="navbar navbar-inverse" style="height:100px">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand" style="color:black;font-size:40px;margin-top:20px;padding-right:0px;margin-right:5px;margin-left:10px;">MemoryMatrix</span>
+
+    </div>
+    <div>
+      
+    <img src="img/mat.svg" alt="grid" style="width:50;height:50;display:inline;margin-top:20px">
+      <div class="pull-right" style="margin-top:32px;">
+      	<span style="display:inline;font-size:20;color:black">Signed in as {{user}} <i class="fa fa-odnoklassniki" style="color:white"></i></span>
+        <form ng-submit="logOut();">
+            <button ng-click class="btn btn-primary active" style="background-color:black;margin-left:3px;">Log out</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</nav>
