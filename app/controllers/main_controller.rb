@@ -103,4 +103,9 @@ class MainController < ActionController::Base
 		render json: {"error" => error, "reply" => reply, "matrix" => mat}
 	end
 
+	def statistics
+		item = UserStatisticsDetail.where("username = ?", "user3").map(&:score)
+		render json: {"username_scores" => item}
+	end
+
 end
