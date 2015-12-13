@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.controller('mainController', ['$rootScope', '$scope', '$http', '$location', '$timeout', function($rootScope, $scope, $http, $location, $timeout) {
-    $scope.message = '';
+    $scope.message = 'Train Your Brain';
     $scope.logIn = function(tip) {
 		$http.post('/login', {'type': tip, 'user': $scope.user, 'password':$scope.password})
 			.success(function(data, status, headers, config) {
@@ -47,7 +47,7 @@ app.controller('mainController', ['$rootScope', '$scope', '$http', '$location', 
 
 app.controller('playController', ['$route', '$rootScope', '$scope', '$http','$location', '$timeout', function($route, $rootScope, $scope, $http, $location, $timeout) {
 	$scope.user = window.localStorage.getItem('user');
-
+    $scope.message = '';
     if (!$rootScope.lives) {
         $rootScope.dim = 4;
         $rootScope.lives = 3;
@@ -59,9 +59,13 @@ app.controller('playController', ['$route', '$rootScope', '$scope', '$http','$lo
         $scope.list[k] = k;
     }
 
+    $scope.highScore = 0;
     $http.post('/statistics', {'user': $scope.user})
         .success(function(data, status, headers, config) {
-            $scope.highScore = Math.max.apply(Math,data['username_scores'])
+            if(data['username_scores'].length != 0) {
+                console.log(data['username_scores']);
+                $scope.highScore = Math.max.apply(Math, data['username_scores']) 
+            }
         })
         .error(function(data, status, headers, config) {
             console.log('Error server');

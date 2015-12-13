@@ -40,7 +40,6 @@ class MainController < ActionController::Base
 				reply = "Signup successful."
 			end
 		end
-		reply += " #{given_name} #{given_pass} #{login_type}"
 		render json: {"error" => error, "reply" => reply}
 	end
 
