@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.controller('mainController', ['$rootScope', '$scope', '$http', '$location', '$timeout', function($rootScope, $scope, $http, $location, $timeout) {
-    $scope.message = 'Train your brain!';
+    $scope.message = '';
     $scope.logIn = function(tip) {
 		$http.post('/login', {'type': tip, 'user': $scope.user, 'password':$scope.password})
 			.success(function(data, status, headers, config) {
@@ -41,8 +41,6 @@ app.controller('mainController', ['$rootScope', '$scope', '$http', '$location', 
 	        	console.log('Error server');
 	        });
     }
-
-    
 
   window.sc = $scope;
 }]);

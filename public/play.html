@@ -9,7 +9,7 @@
       
     <img src="img/mat.svg" alt="grid" style="width:50;height:50;display:inline;margin-top:20px">
       <div class="pull-right" style="margin-top:32px;">
-      	<span style="display:inline">Signed in as {{user}}</span>
+      	<span style="display:inline;font-size:20;color:black">Signed in as {{user}}</span>
         <form ng-submit="logOut();">
             <button ng-click class="btn btn-primary active" style="background-color:black;margin-left:3px">Log out</button>
         </form>
@@ -19,8 +19,8 @@
   </div>
 </nav>
 
-<div style="margin-left:25%;margin-right:25%;background-color:orange;opacity:0.8">
-  <h1 style="font-size:30;color:black;text-align:center">{{message + " Lives Left: " + lives + " Score: " + score}}</h1>
+<div style="margin-left:25%;margin-right:25%;background-color:orange;opacity:1">
+  <h1 style="font-size:30;color:black;text-align:center">{{message + " Lives Left: " + lives}} <i class="fa fa-heart" style="color:red;"></i> {{" Score: " + score}} <i class="fa fa-money" style="color:green"></i></h1>
 </div>
 
 <div id="square" style="position:relative;margin-left:33%;margin-right:33%;height:{{h}}px;">
@@ -34,6 +34,3 @@
     </div>
 </div>
 </div>
-
-
-
