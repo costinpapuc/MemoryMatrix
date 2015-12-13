@@ -88,6 +88,7 @@ app.controller('playController', ['$route', '$rootScope', '$scope', '$http','$lo
         });
 
     $scope.logOut = function() {
+        $rootScope.lives = 0;
         $rootScope.user = null;
         window.localStorage.clear();
         $location.path('/');
